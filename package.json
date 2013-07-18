@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "Launch testswarm tests from a JSON config file.",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:vvo/testswarm-launcher.git"
+  },
   "bin": {
     "testswarm-launcher": "cli.js"
   },
