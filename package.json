@@ -1,0 +1,15 @@
+{
+  "name": "testswarm-launcher",
+  "version": "0.0.1",
+  "description": "Launch testswarm tests from a JSON config file.",
+  "main": "index.js",
+  "bin": {
+    "testswarm-launcher": "cli.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "testswarm": "~1.1.0",
+    "commander": "~1.3.0"
+  }
+}
