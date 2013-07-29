@@ -1,6 +1,6 @@
 {
   "name": "testswarm-launcher",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Launch testswarm tests from a JSON config file.",
   "main": "index.js",
   "repository": {
