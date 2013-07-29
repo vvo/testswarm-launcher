@@ -21,9 +21,15 @@ program
     )
 
 program
-    .option('-F, --format [url]',
-        'Let you reformat runs url at will, %s is the original run url',
-        process.env.FORMAT
+    .option('-b, --baseurl [url]',
+        'Append this baseurl to every test file',
+        process.env.BASEURL
+    )
+
+program
+    .option('-q, --querystring [qs]',
+        'Append this querystring to every test url',
+        process.env.QUERYSTRING
     )
 
 program.parse(process.argv);
@@ -36,9 +42,30 @@ var config = require(path.resolve(program.config));
 var launcher = require('./lib.js');
 var util = require('util');
 
-if (program.format) {
+if (program.baseurl) {
   Object.keys(config.runs).forEach(function(name) {
-    config.runs[name] = util.format(program.format.trim(), config.runs[name]);
+    config.runs[name] = program.baseurl + config.runs[name];
+  });
+}
+
+if (program.querystring) {
+  Object.keys(config.runs).forEach(function(name) {
+    var url = require('url');
+    var qs = require('querystring');
+    var merge = require('deepmerge');
+
+    var u = url.parse(config.runs[name], true);
+    u.query = merge(
+      u.query,
+      qs.parse(program.querystring)
+    );
+
+    // we must delete u.href an u.search for format to re-compute them
+    // from the update querystring
+    delete u.href;
+    delete u.search;
+
+    config.runs[name] = url.format(u);
   });
 }
 

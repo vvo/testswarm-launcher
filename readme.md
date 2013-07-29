@@ -15,11 +15,12 @@ npm install -g testswarm-launcher
 
   Options:
 
-    -h, --help             output usage information
-    -V, --version          output the version number
-    -c, --config <file>    Testswarm-launcher configuration file
-    -n, --name <job name>  Testswarm job name, if you are in a CI env, you can put a GIT SHA
-    -F, --format [url]     Let you reformat runs url at will, %s is the original run url
+    -h, --help              output usage information
+    -V, --version           output the version number
+    -c, --config <file>     Testswarm-launcher configuration file
+    -n, --name <job name>   Testswarm job name, if you are in a CI env, you can put a GIT SHA
+    -b, --baseurl [url]     Append this baseurl to every test file
+    -q, --querystring [qs]  Append this querystring to every test url
 ```
 
 ## Configuration example
